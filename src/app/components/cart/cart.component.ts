@@ -103,9 +103,16 @@ export class CartComponent implements OnInit {
         return;
       }
       let request: order = _orderModel.CreateRequest(id, this.listCart);
-      this._order.create(request).subscribe((response) => {});
-      localStorage.removeItem(`cart${id}`);
-      window.location.reload();
+      this._order.create(request).subscribe((response) => {
+          if(response.code == 200){
+            alert('Đặt hàng thành công');
+            localStorage.removeItem(`cart${id}`);
+            window.location.reload();
+            return;
+          }
+          alert('Đặt hàng thất bại')
+          console.log(request);
+      });
       return;
     }
     alert('Bạn phải đăng nhập mới có thể đặt hàng');
