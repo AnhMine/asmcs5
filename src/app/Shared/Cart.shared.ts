@@ -15,7 +15,7 @@ class _cart {
       name: item.name,
       price: item.price,
       quantity: quantity == undefined ? 1 : (quantity as number),
-      link : item.link[0]
+      link : item.link
     };
   }
 

@@ -41,7 +41,8 @@ export class ShopComponent implements OnInit {
     let page: number = this.pramaster.snapshot.params['page'];
     this.page = page;
     this._products.getShop(id, page).subscribe((response) => {
-      this.listProducts = response;
+      console.log(response);
+      this.listProducts = response; 
     });
   }
   LoadCategorys() {

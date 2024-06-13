@@ -5,7 +5,7 @@ interface products {
   id: number;
   categoryId: number;
   isPrimary: boolean;
-  link: string[];
+  link: string;
   name: string;
   nameCategory: string;
   popular: string;
@@ -43,7 +43,7 @@ class _productsModel {
       id: item.id,
       categoryId: item.categoryId,
       isPrimary: true,
-      link: [],
+      link: '',
       name: item.name,
       nameCategory: '',
       popular: '',
