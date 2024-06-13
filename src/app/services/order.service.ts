@@ -11,7 +11,7 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   create(model: order) {
-    return this.http.post(`${_shared.api}/api/Orders/orders`, model);
+    return this.http.post<any>(`${_shared.api}/api/Orders/orders`, model);
   }
 
   getData(): Observable<orderDTOs[]> {
