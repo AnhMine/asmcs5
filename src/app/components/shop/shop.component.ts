@@ -53,7 +53,7 @@ export class ShopComponent implements OnInit {
   LoadNumberPage() {
     this.listNumber = [];
     this._products.getAllData().subscribe((response) => {
-      let number: number = Math.floor(response.length / 12);
+      let number: number = Math.ceil(response.length / 12);
       for (let i = 1; i <= number; i++) {
         this.listNumber.push(i);
       }
