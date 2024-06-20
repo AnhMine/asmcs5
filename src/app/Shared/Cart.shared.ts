@@ -1,5 +1,6 @@
 import { products } from '../model/products.model';
 
+
 interface cartLocal {
   id: number;
   name: string;
@@ -10,12 +11,17 @@ interface cartLocal {
 
 class _cart {
   static NewItemCart(item: products, quantity?: number): cartLocal {
+    debugger;
+    let image : string = item.link as string
+    if(Array.isArray(image)){
+      image = item.link[0].link as string
+    }
     return {
       id: item.id,
       name: item.name,
       price: item.price,
       quantity: quantity == undefined ? 1 : (quantity as number),
-      link : item.link
+      link : image
     };
   }
 

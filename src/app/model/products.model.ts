@@ -1,3 +1,4 @@
+
 interface products {
   color: string;
   description: string;
@@ -5,7 +6,23 @@ interface products {
   id: number;
   categoryId: number;
   isPrimary: boolean;
-  link: string;
+  link: productsLink[] | string;
+  name: string;
+  nameCategory: string;
+  popular: string;
+  price: number;
+  sex: boolean;
+  size: string;
+  statusHair: string;
+}
+interface productShop{
+  color: string;
+  description: string;
+  hair: string;
+  id: number;
+  categoryId: number;
+  isPrimary: boolean;
+  link: productsLink;
   name: string;
   nameCategory: string;
   popular: string;
@@ -43,7 +60,26 @@ class _productsModel {
       id: item.id,
       categoryId: item.categoryId,
       isPrimary: true,
-      link: '',
+      link: item.link,
+      name: item.name,
+      nameCategory: '',
+      popular: '',
+      price: item.price,
+      sex: item.sex,
+      size: item.size,
+      statusHair: item.statusHair,
+    };
+  }
+
+  static product(item : productShop) : products{
+    return {
+      color: item.color,
+      description: item.description,
+      hair: item.hair,
+      id: item.id,
+      categoryId: item.categoryId,
+      isPrimary: true,
+      link: item.link.link,
       name: item.name,
       nameCategory: '',
       popular: '',
@@ -55,4 +91,4 @@ class _productsModel {
   }
 }
 
-export { products, productsDetal, _productsModel };
+export { products, productsDetal, _productsModel, productsLink , productShop};

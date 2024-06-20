@@ -74,8 +74,10 @@ export class SingleProductComponent implements OnInit {
         newItem,
         quantity as number | undefined
       );
+      alert('Thêm vào giỏ hàng thành công')
     } else {
       _cart.AddToCartLocal('cart', newItem, quantity as number | undefined);
+      alert('Thêm vào giỏ hàng thành công')
     }
     window.location.reload();
   }

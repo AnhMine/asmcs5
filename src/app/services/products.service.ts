@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { _shared } from '../Shared/Shared';
-import { products, productsDetal } from '../model/products.model';
+import { productShop, products, productsDetal } from '../model/products.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,11 +17,13 @@ export class ProductsService {
     return this.http.get<productsDetal[]>(`${_shared.api}/*api/Product/${id}`);
   }
 
-  getShop(id: number, page: number): Observable<products[]> {
-    return this.http.get<products[]>(
+  getShop(id: number, page: number): Observable<productShop[]> {
+    return this.http.get<productShop[]>(
       `${_shared.api}/*api/Product/idCategory/${id}/page/${page}`
     );
   }
+
+  
 
   getBestSeller(): Observable<products[]> {
     return this.http.get<products[]>(`${_shared.api}/*api/Product/best-seller`);

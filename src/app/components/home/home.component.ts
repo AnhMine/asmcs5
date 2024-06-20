@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { _cart, cartLocal } from '../../Shared/Cart.shared';
-import { products } from '../../model/products.model';
+import { products, productsDetal } from '../../model/products.model';
 import { CategoryService } from '../../services/category.service';
 import { BlogService } from '../../services/blog.service';
 
@@ -56,11 +56,14 @@ export class HomeComponent implements OnInit {
   }
   // thêm sản phẩm vào giỏ hàng
   AddToCart(item: products) {
+    debugger
     let id = localStorage.getItem('id');
     if (id) {
       _cart.AddToCartLocal(`cart${id}`, item);
+      alert('Thêm vào giỏ hàng thành công')
     } else {
       _cart.AddToCartLocal('cart', item);
+      alert('Thêm vào giỏ hàng thành công')
     }
     // window.location.reload();
   }

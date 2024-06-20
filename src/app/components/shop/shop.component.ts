@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { CategoryService } from '../../services/category.service';
-import { products } from '../../model/products.model';
+import { _productsModel, productShop, products, productsDetal } from '../../model/products.model';
 import { categoryDTOs } from '../../model/categorys.model';
 import { _cart } from '../../Shared/Cart.shared';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class ShopComponent implements OnInit {
     private pramaster: ActivatedRoute
   ) {}
   list: number[] = [1, 1, 1, 1, 1, 1, 1];
-  listProducts: products[] = [];
+  listProducts: productShop[] = [];
   listCategorys: categoryDTOs[] = [];
   search: string = '';
   listNumber: number[] = [];
@@ -36,12 +36,11 @@ export class ShopComponent implements OnInit {
     this.LoadProducts();
     this.LoadNumberPage();
   }
-  LoadProducts() {
+  LoadProducts() {    
     let id: number = this.pramaster.snapshot.params['id'];
     let page: number = this.pramaster.snapshot.params['page'];
     this.page = page;
     this._products.getShop(id, page).subscribe((response) => {
-      console.log(response);
       this.listProducts = response; 
     });
   }
@@ -64,12 +63,15 @@ export class ShopComponent implements OnInit {
     this.router.navigate([`shop/${id}/${page}`]);
   }
   // thêm sản phẩm vào giỏ hàng
-  AddToCart(item: products) {
+  AddToCart(item: productShop) {
+    let product = _productsModel.product(item)
     let id = localStorage.getItem('id');
     if (id) {
-      _cart.AddToCartLocal(`cart${id}`, item);
+      _cart.AddToCartLocal(`cart${id}`, product);
+      alert('Thêm vào giỏ hàng thành công')
     } else {
-      _cart.AddToCartLocal('cart', item);
+      _cart.AddToCartLocal('cart', product);
+      alert('Thêm vào giỏ hàng thành công')
     }
   
   }
@@ -87,7 +89,9 @@ export class ShopComponent implements OnInit {
     this.FiterSearch(name);
   }
   FiterSearch(name: string) {
-    this._products.getAllData().subscribe((response) => {
+    let id: number = this.pramaster.snapshot.params['id'];
+    let page: number = this.pramaster.snapshot.params['page'];
+    this._products.getShop(id, page).subscribe((response) => {
       this.listProducts = response.filter((a) =>
         a.name.trim().toUpperCase().includes(name.trim().toUpperCase())
       );
