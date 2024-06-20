@@ -71,7 +71,7 @@ export class ShopComponent implements OnInit {
     } else {
       _cart.AddToCartLocal('cart', item);
     }
-    window.location.reload();
+  
   }
 
   GetByCategory(id: number) {

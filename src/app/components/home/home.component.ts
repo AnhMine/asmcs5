@@ -62,6 +62,6 @@ export class HomeComponent implements OnInit {
     } else {
       _cart.AddToCartLocal('cart', item);
     }
-    window.location.reload();
+    // window.location.reload();
   }
 }

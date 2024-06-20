@@ -111,11 +111,11 @@
 
                                 <form id="form1" [formGroup]="SiginForm" class="form-group flex-wrap ">
                                     <div class="form-input col-lg-12 my-4">
-                                        <input type="text" id="exampleInputName" placeholder="Nhập hộ tên"
+                                        <input type="text" id="exampleInputName" placeholder="Nhập họ tên"
                                             class="form-control mb-3 p-4" formControlName="fullname">
                                         <p style="color: red;" *ngIf="SiginForm.get('fullname')?.errors?.['required']">
                                             Bạn chưa nhập
-                                            hộ tên</p>
+                                            họ tên</p>
                                         <input type="email" id="exampleInputEmail1" name="email"
                                             placeholder="Nhập email" class="form-control mb-3 p-4"
                                             formControlName="email">
